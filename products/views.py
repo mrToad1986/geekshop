@@ -1,10 +1,12 @@
 from django.shortcuts import render
+from datetime import datetime
 
 # Create your views here.
 
 def index(request):
 	context = {
-	'title': 'Geekshop'
+	'title': 'Geekshop',
+	'date': datetime.now(),
 	}
 	return render(request, 'products/index.html', context)
 
