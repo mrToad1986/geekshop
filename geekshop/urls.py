@@ -25,6 +25,7 @@ urlpatterns = [
     path('products/', include('products.urls', namespace='products')),
     #после products идет путь из /products/urls.py
     path('admin/', admin.site.urls),
+    path('users/', include('users.urls', namespace='users')),
 ]
 
 if settings.DEBUG:
