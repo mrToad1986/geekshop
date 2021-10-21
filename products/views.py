@@ -1,5 +1,5 @@
 #Добавлено-1 - загрузка динамического контента из json-файла
-#Добавлено-2 - загрузка изи БД вместо json-файла
+#Добавлено-2 - загрузка из БД вместо json-файла
 
 from datetime import datetime
 from django.shortcuts import render
