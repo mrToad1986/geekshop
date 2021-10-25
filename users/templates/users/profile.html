@@ -20,7 +20,7 @@
                          class="img-thumbnail">
                 </div>
                 <form action="{% url 'users:profile' %}" method="post" enctype="multipart/form-data">
-                    //enctype - кодировка для передачи файлов
+                    <!--enctype - кодировка для передачи файлов-->
                     {% csrf_token %}
                     <div class="form-row">
                         <div class="col-lg-6">
@@ -63,11 +63,11 @@
                     </div>
                 </form>
             </div>
-            <!--
+
             <div class="col-lg-5">
                 {% include 'baskets/baskets.html' %}
             </div>
-            -->
+
         </div>
     </div>
 {% endblock %}

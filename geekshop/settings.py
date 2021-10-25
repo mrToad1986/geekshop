@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products', #созданное приложение
     'users', #созданное приложение
+    'baskets', #созданное приложение
 ]
 
 MIDDLEWARE = [
