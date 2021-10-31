@@ -22,10 +22,11 @@ from products.views import index
 
 urlpatterns = [
     path('', index, name = 'index'),
-    path('products/', include('products.urls', namespace='products')),
-    #после products идет путь из /products/urls.py
     path('admin/', admin.site.urls),
+    path('products/', include('products.urls', namespace='products')),
+    # после products идет путь из /products/urls.py, по аналогии также для других приложений
     path('users/', include('users.urls', namespace='users')),
+    path('baskets/', include('baskets.urls', namespace='baskets'))
 ]
 
 if settings.DEBUG:
