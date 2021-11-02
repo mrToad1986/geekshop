@@ -2,8 +2,10 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import auth
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from users.forms import UserLoginForm, UserRegistrationForm, UserChangeForm, UserProfileForm
+from baskets.models import Basket
 
 def login(request):
     if request.method == 'POST':
@@ -15,15 +17,11 @@ def login(request):
             if user and user.is_active:
                 auth.login(request, user)
                 return HttpResponseRedirect(reverse('index'))
-        else:
-            print (form.errors)
-
     else:
         form = UserLoginForm()
-
     context = {
         'title': 'Geekshop - Авторизация',
-        'form': form,
+        'form': form
     }
     return render(request, 'users/login.html', context)
 
@@ -34,14 +32,19 @@ def registration(request):
             form.save()
             messages.success(request, 'Вы успешно зарегистрировались!')
             return HttpResponseRedirect(request('users:login'))
-        else:
-            print(form.errors)
+#        else:
+#            print(form.errors)
     else:
         form = UserRegistrationForm()
-    context = {'title': 'Geekshop - Регистрация', 'form': form}
+    context = {
+        'title': 'Geekshop - Регистрация',
+        'form': form
+    }
     return render(request, 'users/registration.html', context)
 
+@login_required
 def profile(request):
+    user = request.user
     if request.method == 'POST':
         form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
         if form.is_valid():
@@ -49,7 +52,11 @@ def profile(request):
             return HttpResponseRedirect(request('users:profile'))
     else:
         form = UserProfileForm(instance=request.user)
-    context = {'title': 'Geekshop профиль', 'form': form}
+    context = {
+        'title': 'Geekshop профиль',
+        'form': form,
+        'baskets': Basket.objects.filter(user=user),
+    }
     return render(request, 'users/profile.html', context)
 
 def logout(request):

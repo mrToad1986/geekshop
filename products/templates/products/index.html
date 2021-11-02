@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+    <link href="{% static '/css/index.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -10,6 +10,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
+                    <style>
+                        body {
+                            background: url("../static/img/wallpaper.jpg") no-repeat center top fixed;
+                            -webkit-background-size: cover;
+                            -moz-background-size: cover;
+                            background-size: cover;
+                            -o-background-size: cover;
+                            padding-top: 56px;
+                            }
+                        </style>
                     <h1 class="mt-5">GeekShop</h1>
                     <p>
                         Новые образы и лучшие бренды на GeekShop Store.
