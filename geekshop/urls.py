@@ -26,7 +26,8 @@ urlpatterns = [
     path('products/', include('products.urls', namespace='products')),
     # после products идет путь из /products/urls.py, по аналогии также для других приложений
     path('users/', include('users.urls', namespace='users')),
-    path('baskets/', include('baskets.urls', namespace='baskets'))
+    path('baskets/', include('baskets.urls', namespace='baskets')),
+    path('admins/', include('admins.urls', namespace='admins')),
 ]
 
 if settings.DEBUG:
