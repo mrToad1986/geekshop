@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'products', #созданное приложение
     'users', #созданное приложение
     'baskets', #созданное приложение
+    'admins', #созданное приложение
 ]
 
 MIDDLEWARE = [
